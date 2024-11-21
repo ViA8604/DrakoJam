@@ -9,8 +9,9 @@ class RegistScreen extends StatefulWidget {
 }
 
 class RegistScreenState extends State<RegistScreen> {
+  int _index = 0;
   final TextEditingController _controller1 = TextEditingController();
-
+  final List<String> _fieldText = ['Phone number', 'Type code', 'Password'];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -37,7 +38,7 @@ class RegistScreenState extends State<RegistScreen> {
                   controller: _controller1,
                   decoration: InputDecoration(
                     border: const OutlineInputBorder(),
-                    hintText: "Phone number",
+                    hintText: _fieldText[_index],
                     hintStyle: TextStyle(color: mahoganyColor),
                     filled: true,
                     fillColor: Colors.grey[200],
@@ -54,7 +55,9 @@ class RegistScreenState extends State<RegistScreen> {
               const SizedBox(height: 30),
               ElevatedButton(
                 onPressed: () {
-                  setState(() {});
+                  setState(() {
+                    (_index + 1 < _fieldText.length) ? _index++ : _index + 0;
+                  });
                 },
                 style: ButtonStyle(
                   backgroundColor: MaterialStateProperty.all(
